@@ -1,0 +1,39 @@
+<wxs module="format">
+  function formatCount(count){
+    if(count>100000000){
+      return (count/100000000).toFixed(1)+"亿"
+    }else if(count>10000){
+      return (count/10000).toFixed(1)+"万"
+    }
+  }
+  function formatDuration(duration) {
+    function padLeftZero(time) {
+      time = time + "";
+      return ('00' + time).slice(time.length)
+    }
+    var duration = duration/1000;
+    var min = Math.floor(duration/60);
+    var second = Math.floor(duration)%60;
+    return padLeftZero(min)+":"+padLeftZero(second)
+  }
+  module.exports.formatCount = formatCount;
+  module.exports.formatDuration = formatDuration;
+</wxs>
+<!--pages/detail-video/index.wxml-->
+<video class="video" src="{{MVUrl.url}}" autoplay="true"></video> 
+<view class="info">
+  <view class="title">{{ MVDetail.name }}</view>
+  <view class="desc">{{ MVDetail.artistName }} - {{ MVDetail.alias[0] }}</view>
+  <view class="other">
+    <text class="play-count">{{format.formatCount(MVDetail.playCount)}}次播放 - </text>
+    <text class="publish-time">{{MVDetail.publishTime}}</text>
+  </view>
+</view>
+<view class="recommend" bindtap="MVRelateClick" data-item="{{item}}">
+  <view class="title">推荐视频</view>
+  <view class="video-list">
+    <block wx:for="{{MVRelate}}" wx:key="vid">
+      <video-list-item2 itemInfo="{{item}}"></video-list-item2>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<wxs module="format">
+  function formatCount(count){
+    if(count>100000000){
+      return (count/100000000).toFixed(1)+"亿"
+    }else if(count>10000){
+      return (count/10000).toFixed(1)+"万"
+    }
+  }
+  function formatDuration(duration) {
+    function padLeftZero(time) {
+      time = time + "";
+      return ('00' + time).slice(time.length)
+    }
+    var duration = duration/1000;
+    var min = Math.floor(duration/60);
+    var second = Math.floor(duration)%60;
+    return padLeftZero(min)+":"+padLeftZero(second)
+  }
+  module.exports.formatCount = formatCount;
+  module.exports.formatDuration = formatDuration;
+</wxs>
+<!--components/video-list-item2/index.wxml-->
+<view class="item">
+  <view class="album">
+    <image class="image" mode="widthFix" src="{{itemInfo.coverUrl}}"></image>
+    <view class="info">
+      <text class="count">{{format.formatCount(itemInfo.playTime)}}</text>
+    </view>
+  </view>
+  <view class="content">
+    <view class="title">{{itemInfo.title}}</view>
+    <view class="nickname">{{itemInfo.creator[0].userName}}</view>
+  </view>
+</view>

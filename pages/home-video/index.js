@@ -1,66 +1,63 @@
 // pages/home-video/index.js
+import {
+  getTopMV
+} from '../../service/api_video'
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    topMVs: [],
+    hasMore: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getTopMVData(0, 10)
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 封装网络请求的方法
+  async getTopMVData(offset, limit) {
+    // 判断是否可以请求数据
+    if (!this.data.hasMore && offset !== 0) return
+    wx.showNavigationBarLoading();
+    // 请求数据
+    const res = await getTopMV(offset, limit)
+    let newData = this.data.topMVs;
+    if (offset === 0) {
+      newData = res.data.data
+    } else {
+      newData = newData.concat(res.data.data)
+    }
+    // 设置数据
+    this.setData({
+      topMVs: newData
+    })
+    this.setData({
+      hasMore: res.data.hasMore
+    })
+    wx.hideNavigationBarLoading()
+    if (offset === 0) {
+      wx.stopPullDownRefresh()
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  // 封装按钮点击的方法
+  handleVideoClick: function (event) {
+    // 获取点击id
+    const id = event.currentTarget.dataset.item.id;
+    wx.navigateTo({
+      url: '/pages/detail-video/index?id='+id
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  // 其他生命周期
+  onPullDownRefresh: async function () {
+    await this.getTopMVData(0, 10)
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onReachBottom: async function () {
+    if (!this.data.hasMore) return
+    await this.getTopMVData(this.data.topMVs.length, 10)
   }
 })

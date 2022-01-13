@@ -39,7 +39,7 @@
                 "minifyWXSS": true
         },
         "compileType": "miniprogram",
-        "libVersion": "2.19.2",
+        "libVersion": "2.18.0",
         "appid": "wxdf4f74715ee08b98",
         "projectname": "cqmusic",
         "debugOptions": {

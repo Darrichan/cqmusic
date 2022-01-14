@@ -1,4 +1,4 @@
-const baseUrl = 'http://3.chen7.xyz:3000/'
+const baseUrl = 'http://123.207.32.32:9001/'
 class CQRequset {
   request(url, method, params) {
     return new Promise((resolve, reject) => {

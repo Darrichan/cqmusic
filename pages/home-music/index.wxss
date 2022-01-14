@@ -1,14 +1,22 @@
 /* pages/home-music/index.wxss */
+page{
+  padding: 0 20rpx;
+        
+}
+.van-search{
+        padding: 10px 0 !important;
+}
 .van-search__content{
 background-color: #ffffff !important;
 }
 .swiper{
-
+border-radius: 10rpx;
+overflow: hidden;
 }
 .swiper-item{
 display: flex;
 }
-.swiper-item .image{
+.swiper-item .swiper-image{
         width: 100%;
 
 }

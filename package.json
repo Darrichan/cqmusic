@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Darrichan/cqmusic#readme",
   "dependencies": {
-    "@vant/weapp": "^1.10.2"
+    "@vant/weapp": "^1.10.2",
+    "hy-event-store": "^1.2.0"
   }
 }

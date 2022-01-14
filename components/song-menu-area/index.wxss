@@ -1,0 +1,13 @@
+/* components/song-menu/index.wxss */
+.menu-list{
+white-space: nowrap;
+}
+.menu-item{
+        display: inline-block;
+        vertical-align: top;
+        width: 220rpx;
+        margin-left: 20rpx;
+}
+.menu-item:first-child{
+        margin-left: 0;
+}

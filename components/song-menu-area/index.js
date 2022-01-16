@@ -4,13 +4,13 @@ Component({
          * 组件的属性列表
          */
         properties: {
-                songMenu:{
-                        type:Array,
-                        value:[]
+                songMenu: {
+                        type: Array,
+                        value: []
                 },
-                title:{
-                        type:String,
-                        value:''
+                title: {
+                        type: String,
+                        value: ''
                 }
         },
 
@@ -25,6 +25,11 @@ Component({
          * 组件的方法列表
          */
         methods: {
-
+                handleMenuItemClick: function (event) {
+                        const item = event.currentTarget.dataset.item;
+                        wx.navigateTo({
+                                url: `/pages/detail-songs/index?id=${item.id}&type=menu`,
+                        })
+                }
         }
 })

@@ -1,3 +1,3 @@
 export {
-        rankingStore
+        rankingStore,rankingMap
 } from './ranking-store'

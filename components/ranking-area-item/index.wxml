@@ -1,0 +1,28 @@
+<!--components/ranking-area-item/index.wxml-->
+<wxs module="m2">
+  function formatCount(count){
+    if(count>100000000){
+      return (count/100000000).toFixed(1)+"亿"
+    }else if(count>10000){
+      return (count/10000).toFixed(1)+"万"
+    }
+  }
+  module.exports.formatCount = formatCount;
+</wxs>
+<view class="item">
+  <view class="content">
+    <view class="content-title">{{item.name}}</view>
+    <view class="content-list">
+      <block wx:for="{{3}}" wx:for-item="index" wx:key="*this">
+        <view class="content-list-item">
+          <text>{{index+1}}. {{item.songList[index].name}}</text>
+          <text class="singer"> - {{item.songList[index].ar[0].name}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="album">
+    <image class="image" src="{{item.coverImgUrl}}" mode="aspectFill"></image>
+    <view class="play-counter">{{m2.formatCount(item.playCount)}}</view>
+  </view>
+</view>

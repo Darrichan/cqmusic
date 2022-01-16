@@ -10,10 +10,15 @@ export function getRankingData(idx) {
         })
 }
 // cat -> category 类别
-export function getSongMenu(cat="全部", limit=10, offset=0) {
+export function getSongMenu(cat = "全部", limit = 10, offset = 0) {
         return cqrequest.get("top/playlist", {
-          cat,
-          limit,
-          offset
+                cat,
+                limit,
+                offset
         })
-      }
+}
+export function getSongMenuDetail(id) {
+        return cqrequest.get("playlist/detail/dynamic", {
+                id
+        })
+}

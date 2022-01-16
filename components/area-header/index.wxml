@@ -3,7 +3,7 @@
         <view class="title">
                 {{title}}
         </view>
-        <view class="right" wx:if="{{showRight}}">
+        <view class="right" wx:if="{{showRight}}" bindtap="handlerRightClick">
                 <view class="slot">
                         <slot></slot>
                 </view>

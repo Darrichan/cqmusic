@@ -1,12 +1,16 @@
-// components/song-item-v1/index.js
+// components/song-item-v2/index.js
 Component({
         /**
          * 组件的属性列表
          */
         properties: {
+                index: {
+                        type: Number,
+                        value: 0
+                },
                 item:{
                         type:Object,
-                        value:{ }
+                        value:{}
                 }
         },
 
@@ -22,10 +26,10 @@ Component({
          */
         methods: {
                 handleSongItemClick:function(){
-                        const id = this.properties.item.id
-                          wx.navigateTo({
-                            url: '../../pages/music-player/index?id='+id,
-                          }) 
-                   }
+                     const id = this.properties.item.id
+                       wx.navigateTo({
+                         url: '../../pages/music-player/index?id='+id,
+                       }) 
+                }
         }
 })

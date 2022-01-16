@@ -29,6 +29,18 @@
                                         "pathName": "pages/home-music/index",
                                         "query": "",
                                         "scene": null
+                                },
+                                {
+                                        "name": "detail-song",
+                                        "pathName": "pages/detail-songs/index",
+                                        "query": "id=7020312267&type=menu",
+                                        "scene": null
+                                },
+                                {
+                                        "name": "pages/detail-search/index",
+                                        "pathName": "pages/detail-search/index",
+                                        "query": "",
+                                        "scene": null
                                 }
                         ]
                 }

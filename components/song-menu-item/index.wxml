@@ -1,8 +1,18 @@
 <!--components/song-menu-item/index.wxml-->
+<wxs module="m2">
+  function formatCount(count){
+    if(count>100000000){
+      return (count/100000000).toFixed(1)+"亿"
+    }else if(count>10000){
+      return (count/10000).toFixed(1)+"万"
+    }
+  }
+  module.exports.formatCount = formatCount;
+</wxs>
 <view class="item">
         <view class="top">
                 <image class="image" mode="widthFix" src="{{item.coverImgUrl}}"></image>
-                <view class="play-counter">{{item.playcount}}</view>
+                <view class="play-counter">{{m2.formatCount(item.playCount)}}</view>
         </view>
         <view class="bottom">{{item.name}}</view>
 </view>

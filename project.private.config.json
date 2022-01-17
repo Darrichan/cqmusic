@@ -41,6 +41,12 @@
                                         "pathName": "pages/detail-search/index",
                                         "query": "",
                                         "scene": null
+                                },
+                                {
+                                        "name": "pages/music-player/index",
+                                        "pathName": "pages/music-player/index",
+                                        "query": "id=1891469546",
+                                        "scene": null
                                 }
                         ]
                 }

@@ -1,5 +1,5 @@
 <!--pages/detail-search/index.wxml-->
-<van-search class="search" background="#f7f7f7" shape="round" show-action="{{searchValue}}" bind:change="handleSearchChange" value="{{searchValue}}" bind:search="handleSearchAction">
+<van-search class="search" background="#f7f7f7" shape="round" show-action="{{searchValue}}" bind:change="handleSearchChange" value="{{searchValue}}" bind:search="handleSearchAction" focus>
 </van-search>
 
 <!-- 热门搜索 -->

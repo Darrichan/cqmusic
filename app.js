@@ -1,19 +1,19 @@
 // app.js
 App({
-  onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  onLaunch: function() {
+    const info = wx.getSystemInfoSync()
+    this.globalData.screenWidth = info.screenWidth
+    this.globalData.screenHeight = info.screenHeight
+    this.globalData.statusBarHeight = info.statusBarHeight
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+    const deviceRadio = info.screenHeight / info.screenWidth
+    this.globalData.deviceRadio = deviceRadio
   },
   globalData: {
-    userInfo: null
+    screenWidth: 0,
+    screenHeight: 0,
+    statusBarHeight: 0,
+    navBarHeight: 44,
+    deviceRadio: 0
   }
 })

@@ -42,8 +42,10 @@ Page({
                 })
                 if (!searchValue.length) {
                         this.setData({
-                                suggestSongs: []
+                                suggestSongs: [],
+                                resultSongs:[]
                         })
+                        debounceGetSearchSuggest.cancel()
                         return;
                 }
                 // 4.根据关键字进行搜索
@@ -55,6 +57,7 @@ Page({
                         })
 
                         // 2.转成nodes节点
+                        if(!suggestSongs) return
                         const suggestKeywords = suggestSongs.map(item => item.keyword)
                         const suggestSongsNodes = []
                         for (const keyword of suggestKeywords) {
